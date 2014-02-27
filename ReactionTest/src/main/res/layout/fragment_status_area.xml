@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/bestTime"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.40"
+        android:gravity="right"
+        android:text="--"
+        android:textSize="20sp" />
+    <!-- android:freezesText: retains text in the box during configuration change -->
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.60"
+        android:freezesText="true"
+        android:gravity="center_horizontal"
+        android:text="--"
+        android:textSize="30sp" />
+
+</LinearLayout>

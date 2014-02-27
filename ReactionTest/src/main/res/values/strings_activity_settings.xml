@@ -1,0 +1,13 @@
+<resources>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="keyNotification">keyNotification</string>
+    <string name="keyClearBest">keyClearBest</string>
+
+    <!-- Strings related to Settings -->
+    <string name="settingClearBest">Clear best on exit</string>
+    <string name="settingClearBestSummary">If checked, the best reaction time will clear when you exit the app</string>
+    <string name="settingNotification">Enable notification</string>
+    <string name="settingNotificationSummary">If checked, compatible devices send a foreground notification showing the latest reaction time. The app never sends any background notifications.</string>
+
+</resources>

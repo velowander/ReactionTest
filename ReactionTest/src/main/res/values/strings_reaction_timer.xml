@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="state_descriptions">
+        <item>Idle</item>
+        <item>Wait for start...</item>
+        <item>Click the button now!</item>
+        <item>Reaction time: %d ms</item>
+    </string-array>
+</resources>

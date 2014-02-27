@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <fragment
+        android:id="@+id/fragment_status_area"
+        android:name="org.fanchuan.reactiontest.MainActivity$StatusAreaFragment"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="0.20"
+        tools:layout="@layout/fragment_status_area" />
+
+    <Button
+        android:id="@+id/go_button"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/go_button"
+        android:layout_weight="0.80" />
+
+</LinearLayout>
