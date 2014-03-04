@@ -13,11 +13,17 @@
         android:layout_weight="0.20"
         tools:layout="@layout/fragment_status_area" />
 
-    <Button
-        android:id="@+id/go_button"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/test_control"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="@string/go_button"
+        android:gravity="center"
+        android:text="@string/test_control"
         android:layout_weight="0.80" />
 
 </LinearLayout>

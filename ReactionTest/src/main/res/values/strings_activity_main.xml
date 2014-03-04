@@ -4,10 +4,10 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">Reaction Timer</string>
     <string name="bestTime">Best Time: %d ms</string>
-    <string name="go_button">Testing Button</string>
+    <string name="test_control">Tap here</string>
     <string name="help_button">Help</string>
     <string name="help_title">Instructions</string>
-    <string name="help_text">This app will measure your reaction time in milliseconds.\n\nAfter you click the button, there is a random delay so that you can\'t anticipate the test start. The test resets if you click the button during this delay. When instructed, click the button as quickly as you can.\n\n<i>Launch icon: Wikimedia Commons</i></string>
+    <string name="help_text">This app will measure your reaction time in milliseconds.\n\nAfter you tap the test control area, there is a random delay so that you can\'t anticipate the test start. The test resets if you tap during this delay. When instructed, tap as quickly as you can.\n\n<i>Launch icon: Wikimedia Commons</i></string>
     <string name="keyBestTime">keyBestTime</string>
 
 </resources>
