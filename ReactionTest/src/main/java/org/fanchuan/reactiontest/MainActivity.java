@@ -68,6 +68,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
+        //User has started the test or the test is underway and is clicking as fast as possible
         if (e.getAction() == MotionEvent.ACTION_DOWN) {
             StatusAreaFragment statusAreaFragment = (StatusAreaFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_status_area);
             statusAreaFragment.reactionTimer.onTestControlEvent();
@@ -75,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
         return true;
     }
 
-    public static class StatusAreaFragment extends Fragment implements ReactionTimer.Callback, View.OnClickListener {
+    public static class StatusAreaFragment extends Fragment implements ReactionTimer.Callback {
 
         private final String TAG = StatusAreaFragment.class.getSimpleName();
 
@@ -139,11 +140,6 @@ public class MainActivity extends ActionBarActivity {
             } catch (Exception e) {
                 Log.e(TAG, "Problem clearing preferences on exit", e);
             }
-        }
-
-        @SuppressWarnings("unused")
-        public void onClick(View vw) {
-            reactionTimer.onTestControlEvent();
         }
 
         private void showBestTime() {
