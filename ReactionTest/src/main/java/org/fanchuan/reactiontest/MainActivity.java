@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -32,9 +33,6 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        StatusAreaFragment statusAreaFragment = (StatusAreaFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_status_area);
-        findViewById(R.id.test_control).setOnClickListener(statusAreaFragment);
     }
 
     @Override
@@ -68,7 +66,16 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static class StatusAreaFragment extends Fragment implements ReactionTimerObserver, View.OnClickListener {
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        if (e.getAction() == MotionEvent.ACTION_DOWN) {
+            StatusAreaFragment statusAreaFragment = (StatusAreaFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_status_area);
+            statusAreaFragment.reactionTimer.onTestControlEvent();
+        }
+        return true;
+    }
+
+    public static class StatusAreaFragment extends Fragment implements ReactionTimer.Callback, View.OnClickListener {
 
         private final String TAG = StatusAreaFragment.class.getSimpleName();
 
@@ -136,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
 
         @SuppressWarnings("unused")
         public void onClick(View vw) {
-            reactionTimer.click();
+            reactionTimer.onTestControlEvent();
         }
 
         private void showBestTime() {

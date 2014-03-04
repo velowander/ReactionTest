@@ -13,7 +13,7 @@ class ReactionTimer {
     final short STATE_TESTING = 2; // Reaction timer is running, waiting for button press
     final short STATE_FINISHED = 3; // Congratulate user
     String[] stateDescriptions;
-    ReactionTimerObserver observer;
+    Callback observer;
     final Runnable BEGIN_TEST = new Runnable() {
         public void run() {
             activityState = STATE_TESTING;
@@ -32,13 +32,14 @@ class ReactionTimer {
     private Random randTimer = new Random();
 
 
-    ReactionTimer(ReactionTimerObserver observer, String[] stateDescriptions) {
+    ReactionTimer(Callback observer, String[] stateDescriptions) {
         this.observer = observer;
         this.stateDescriptions = stateDescriptions;
         handlerTest.post(UPDATE_UI_STATUS);
     }
 
-    void click() {
+    void onTestControlEvent() {
+        //User has activated a widget for the test to proceed
         final int baseDelayMs = 1000;
         final int delayMultiplierMs = 1500;
         final Runnable END_TEST = new
@@ -76,10 +77,12 @@ class ReactionTimer {
                 break;
         }
     }
+
+    interface Callback {
+        //the "hosting" class must implement this interface to receive UI callbacks.
+        void submitLatestTime(long timeElapsed, String reactionTimeText);
+
+        void updateUiStatus(String statusText);
+    }
 }
 
-interface ReactionTimerObserver {
-    void submitLatestTime(long timeElapsed, String reactionTimeText);
-
-    void updateUiStatus(String statusText);
-}
