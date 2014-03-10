@@ -158,8 +158,10 @@ public class MainActivity extends ActionBarActivity {
         @Deprecated
         public void showEndTestNotification(String reactionTimeText) {
         /* If user checked show notification checkbox in settings, generates a sample notification, notifying of the reaction time.
-        Worked in several Genymotion API18 emulators and Moto Xoom tablet but threw Exception on LG API10 phone (??)
-        Deprecated and not used as it was only to learn notifications and served no useful purpose in the app */
+        * Worked in several Genymotion API18 emulators and Moto Xoom tablet but threw Exception on LG API10 phone
+        * my guess is because API10 doesn't support Jelly Bean style notifications and wants a .contentIntent() to launch
+        * an activity from the notification.
+        * Deprecated and not used as it was only to learn notifications and served no useful purpose in the app */
             String keyNotification = getResources().getString(R.string.keyNotification);
             boolean settingNotification = prefs.getBoolean(keyNotification, false);
             Log.d(TAG, keyNotification + ": " + String.valueOf(settingNotification));
@@ -167,7 +169,7 @@ public class MainActivity extends ActionBarActivity {
                 try {
                     Activity parentActivity = getActivity();
                     NotificationCompat.Builder notifyReactionTimeBuilder = new NotificationCompat.Builder(parentActivity)
-                            .setSmallIcon(R.drawable.ic_launcher)
+                            .setSmallIcon(android.R.drawable.status_bar_item_background)
                             .setContentText(reactionTimeText)
                             .setContentTitle(this.getString(R.string.app_name));
                     NotificationManager mNotificationManager = (NotificationManager) parentActivity.getSystemService(Context.NOTIFICATION_SERVICE);
