@@ -2,11 +2,13 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Notification checkbox removed as it was only to learn notifications and served no useful purpose
     <CheckBoxPreference
         android:key="@string/keyNotification"
         android:title="@string/settingNotification"
         android:summary="@string/settingNotificationSummary"
         android:defaultValue="false" />
+    -->
 
     <CheckBoxPreference
         android:key="@string/keyClearBest"

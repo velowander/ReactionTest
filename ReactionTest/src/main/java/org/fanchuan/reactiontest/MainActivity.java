@@ -155,19 +155,26 @@ public class MainActivity extends ActionBarActivity {
             }
         }
 
+        @Deprecated
         public void showEndTestNotification(String reactionTimeText) {
-        /* Generates a sample notification, notifying of the reaction time.
-        Worked in several Genymotion API18 emulators and Moto Xoom tablet but threw Exception on LG API10 phone (??) */
-            try {
-                Activity parentActivity = getActivity();
-                NotificationCompat.Builder notifyReactionTimeBuilder = new NotificationCompat.Builder(parentActivity)
-                        .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentText(reactionTimeText)
-                        .setContentTitle(this.getString(R.string.app_name));
-                NotificationManager mNotificationManager = (NotificationManager) parentActivity.getSystemService(Context.NOTIFICATION_SERVICE);
-                mNotificationManager.notify(0, notifyReactionTimeBuilder.build());
-            } catch (Exception e) {
-                Log.w(TAG, "Unable to display score notification", e);
+        /* If user checked show notification checkbox in settings, generates a sample notification, notifying of the reaction time.
+        Worked in several Genymotion API18 emulators and Moto Xoom tablet but threw Exception on LG API10 phone (??)
+        Deprecated and not used as it was only to learn notifications and served no useful purpose in the app */
+            String keyNotification = getResources().getString(R.string.keyNotification);
+            boolean settingNotification = prefs.getBoolean(keyNotification, false);
+            Log.d(TAG, keyNotification + ": " + String.valueOf(settingNotification));
+            if (settingNotification) {
+                try {
+                    Activity parentActivity = getActivity();
+                    NotificationCompat.Builder notifyReactionTimeBuilder = new NotificationCompat.Builder(parentActivity)
+                            .setSmallIcon(R.drawable.ic_launcher)
+                            .setContentText(reactionTimeText)
+                            .setContentTitle(this.getString(R.string.app_name));
+                    NotificationManager mNotificationManager = (NotificationManager) parentActivity.getSystemService(Context.NOTIFICATION_SERVICE);
+                    mNotificationManager.notify(0, notifyReactionTimeBuilder.build());
+                } catch (Exception e) {
+                    Log.w(TAG, "Unable to display score notification", e);
+                }
             }
         }
 
@@ -191,12 +198,9 @@ public class MainActivity extends ActionBarActivity {
                 Log.i(TAG, "Committed to preferences latestTime: " + latestTime);
                 showBestTime();
             }
-            //If notification setting is on, displays whether latestTime is bestTime or not
-            String keyNotification = getResources().getString(R.string.keyNotification);
-            boolean settingNotification = prefs.getBoolean(keyNotification, false);
-            Log.d(TAG, keyNotification + ": " + String.valueOf(settingNotification));
-            if (settingNotification)
-                showEndTestNotification(reactionTimeText);
+            /* If notification setting is on, displays whether latestTime is bestTime or not
+            * Removed as it served no useful purpose */
+            //showEndTestNotification(reactionTimeText);
         }
 
         public synchronized void updateUiStatus(String statusText) {
